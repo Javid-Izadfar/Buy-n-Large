@@ -1,9 +1,15 @@
 @import "./mixins/helpers";
 
-$sizes: 1, 2, 3, 4;
+$sizes: 0, 1, 2, 3, 4;
 $sides: top, right, bottom, left;
 
 @each $size in $sizes {
+    .w-#{$size} {
+        @include create-size($size * 25, 'width')
+    }
+    .h-#{$size} {
+        @include create-size($size * 25, 'height')
+    }
     @each $side in $sides {
         .p-#{ $side }-#{ $size } {
             @include create-helper($size * $gutter * 0.5, $side, 'padding')

@@ -1,3 +1,6 @@
 @mixin create-helper($size: $gutter, $side: right, $item: padding) {
     #{ $item }-#{ $side }: $size !important;
 }
+@mixin create-size($size: 100, $item: padding) {
+    #{ $item }: $size * 1% !important;
+}
