@@ -2,7 +2,8 @@
     <component :is="tag"
                :class="[
                    'col',
-                   cols ? `col--${cols}` : ''
+                   cols ? `col--${cols}c` : '',
+                   order ? `col--${order}o` : ''
                ]">
         <slot/>
     </component>
@@ -19,6 +20,10 @@ export default {
             type: [Number, String],
             default: 0,
         },
+        order: {
+            type: [Number, String],
+            default: 0,
+        },
     },
 };
 </script>
@@ -29,8 +34,13 @@ export default {
         padding-right: $gutter;
         @include create-col();
         @for $i from 1 through $cols-count {
-            &--#{$i} {
+            &--#{$i}c {
                 @include create-col($i);
+            }
+        }
+        @for $i from 1 through 5 {
+            &--#{$i}o {
+                order: $i;
             }
         }
     }
