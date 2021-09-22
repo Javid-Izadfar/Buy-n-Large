@@ -1,0 +1,35 @@
+@mixin create-button() {
+    display: inline-block;
+    padding: $gutter ($gutter * 2);
+    line-height: 1;
+    border: solid 1px;
+    font-family: $font-family;
+    font-weight: $font-weight-normal;
+    font-size: $font-size-base;
+    text-decoration: none;
+    border-radius: $border-radius-base;
+    cursor: pointer;
+    transition: all 200ms ease-in-out;
+    &--disabled {
+        opacity: 0.8;
+        cursor: not-allowed !important;
+    }
+}
+
+@mixin create-button-var($bg: transparent, $txt: $black) {
+    background-color: $bg;
+    border-color: $bg;
+    color: $txt;
+    &:hover {
+        background-color: darken($bg, 8%);
+    }
+    &-outline {
+        background-color: transparent;
+        border-color: $bg;
+        color: $bg;
+        &:hover {
+            background-color: $bg;
+            color: $txt;
+        }
+    }
+}
