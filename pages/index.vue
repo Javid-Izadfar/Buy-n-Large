@@ -1,9 +1,29 @@
 <template>
-    <div style="width: 300px; margin: auto; padding: 2rem;">
-        <g-box>
-            فارسی
-        </g-box>
-    </div>
+    <g-container>
+        <g-row no-gutters align-v="center">
+            <g-col>
+                <g-box>
+                    here
+                </g-box>
+            </g-col>
+            <g-col cols="2">
+                <g-box>
+                    2 here
+                </g-box>
+                <g-box>
+                    2 here
+                </g-box>
+            </g-col>
+            <g-col cols="2">
+                <g-box>
+                    2 here
+                </g-box>
+                <g-box>
+                    2 here
+                </g-box>
+            </g-col>
+        </g-row>
+    </g-container>
 </template>
 
 <script>

@@ -24,13 +24,13 @@ export default {
     // Global CSS: https://go.nuxtjs.dev/config-css
     css: [
         'reset-css',
-        '~/assets/style/vars/index.scss',
         '~/assets/style/main.scss',
     ],
 
     styleResources: {
         scss: [
-            './assets/style/vars/*.scss',
+            '~/assets/style/vars/*.scss',
+            '~/assets/style/mixins/*.scss',
         ],
     },
 
