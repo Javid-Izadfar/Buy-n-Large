@@ -3,6 +3,7 @@ import { PRODUCTS_LIST } from '~endpoints';
 const PAGE_ROWS_COUNT = 21;
 
 export const state = () => ({
+    possibleFilters: [],
     appliedFilters: {
         rows: PAGE_ROWS_COUNT,
         page: 1,
@@ -15,8 +16,21 @@ export const mutations = {
     setProductsLoading (state, isLoading) {
         state.isLoadingProducts = isLoading;
     },
+    setPossibleFilters (state, filtersObj) {
+        state.possibleFilters = Object.entries(filtersObj).map((filter) => ({
+            key: filter[0],
+            ...filter[1],
+        }));
+    },
     setPage (state, page) {
         state.appliedFilters.page = page;
+    },
+    setFilter (state, { item, value }) {
+        state.appliedFilters = Object.assign({},
+            state.appliedFilters,
+            {
+                [item]: value,
+            });
     },
     setProducts (state, products) {
         state.products = products;
@@ -32,6 +46,7 @@ export const actions = {
             },
         }).then(({ data }) => {
             if (data) {
+                commit('setPossibleFilters', data.filters);
                 commit('setProducts', [
                     ...state.products,
                     ...data.products,

@@ -6,24 +6,19 @@
                     put search here
                 </g-box>
             </g-col>
-            <g-col cols="12" order="2">
+            <g-col cols="11" order="2">
                 <product-list/>
                 <div class="p-top-2 p-bottom-4">
                     <g-button @click="loadMoreProducts"
                               variant="primary-outline"
                               :is-loading="isLoadingProducts"
                               is-block>
-                        بارگزاری موارد بیشتر
+                        بارگذاری موارد بیشتر
                     </g-button>
                 </div>
             </g-col>
             <g-col tag="aside">
-                <div style="position: sticky; top: 2rem">
-                    put desktop filter here
-                    <pre>
-                        {{ appliedFilters }}
-                    </pre>
-                </div>
+                <product-list-filter/>
             </g-col>
         </g-row>
     </g-container>
@@ -45,10 +40,13 @@ export default {
         ...mapState(['appliedFilters', 'isLoadingProducts']),
     },
     methods: {
-        ...mapMutations(['setPage']),
+        ...mapMutations(['setFilter']),
         ...mapActions(['fetchProducts']),
         loadMoreProducts() {
-            this.setPage(this.appliedFilters.page + 1);
+            this.setFilter({
+                item: 'page',
+                value: this.appliedFilters.page + 1,
+            });
             this.fetchProducts();
         },
     },

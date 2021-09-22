@@ -29,9 +29,9 @@ export default {
     .box {
         overflow: hidden;
         padding: $gutter ($gutter * 2);
-        margin-bottom: $gutter * 2;
+        margin-bottom: $gutter;
         background: $box-bg;
-        border-radius: $card-border-radius;
+        border-radius: $box-border-radius;
         position: relative;
         box-shadow: 0 10px 30px rgba(50, 50, 93, 0.12),
                     0 -1px 4px rgba(0, 0, 0, 0.06);
