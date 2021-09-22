@@ -1,12 +1,12 @@
 <template>
     <g-container>
         <g-row>
-            <g-col cols="15">
+            <g-col cols="18">
                 <g-box>
                     put search here
                 </g-box>
             </g-col>
-            <g-col cols="11" order="2">
+            <g-col cols="13" order="2">
                 <product-list/>
                 <div class="p-top-2 p-bottom-4">
                     <g-button @click="loadMoreProducts"
@@ -17,7 +17,7 @@
                     </g-button>
                 </div>
             </g-col>
-            <g-col tag="aside">
+            <g-col cols="5" tag="aside">
                 <product-list-filter/>
             </g-col>
         </g-row>

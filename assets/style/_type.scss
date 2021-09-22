@@ -2,3 +2,8 @@ body {
     font-family: $font-family;
     font-weight: $font-weight-normal;
 }
+
+small,
+.small {
+    font-size: 80%;
+}

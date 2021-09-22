@@ -62,14 +62,14 @@ export default {
             &:before {
                 right: 0;
                 width: $toggler-width;
-                background: $switch-inactive;
+                background: $filter-inactive;
                 border-radius: $border-radius-lg;
             }
             &:after {
                 right: 0;
                 width: $toggler-height;
                 border-radius: $border-radius-full;
-                border: solid ($toggler-height * 0.2) $switch-inactive;
+                border: solid ($toggler-height * 0.2) $filter-inactive;
                 box-sizing: border-box;
                 background: $box-bg;
             }
@@ -79,10 +79,10 @@ export default {
             &:checked {
                 & + #{ $self }_label {
                     &:before {
-                        background: $switch-active;
+                        background: $filter-active;
                     }
                     &:after {
-                        border-color: $switch-active;
+                        border-color: $filter-active;
                         right: $toggler-width - $toggler-height;
                     }
                 }

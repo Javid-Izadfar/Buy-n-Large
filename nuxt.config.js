@@ -38,6 +38,7 @@ export default {
     plugins: [
         '~plugins/axios',
         '~plugins/filters',
+        { src: '~/plugins/rangeSlider', mode: 'client' },
     ],
 
     // Auto import components: https://go.nuxtjs.dev/config-components

@@ -1,6 +1,6 @@
 <template>
     <g-col tag="li"
-           cols="5"
+           cols="6"
            class="m-bottom-4">
         <nuxt-link :to="{
                        name: 'id',
@@ -33,13 +33,13 @@
                                         }
                                     ]">
                                     <div class="price_rrp">
-                                        {{ product.price.rrp_price / 10 | thousand | farsi }}
+                                        {{ product.price.rrp_price | toman }}
                                         <span v-if="!hasDiscount" class="price_currency">
                                             تومان
                                         </span>
                                     </div>
                                     <div v-if="hasDiscount" class="price_selling">
-                                        {{ product.price.selling_price / 10 | thousand | farsi }}
+                                        {{ product.price.selling_price | toman }}
                                         <span class="price_currency">
                                             تومان
                                         </span>
