@@ -18,6 +18,7 @@
                 :max="filter.options.max"
                 :disabled="isLoadingProducts"
                 :formatter="formatter"
+                @slide-end="fetchProducts"
                 class="range_input"
                 tooltip-dir="top"/>
         </client-only>
@@ -27,8 +28,6 @@
 <script>
 import { mapState, mapMutations, mapActions } from 'vuex';
 import { addCommas, toFarsiDigits } from '~/scripts/utils/string';
-
-import isEqual from 'lodash.isequal';
 
 export default {
     props: {
@@ -42,8 +41,8 @@ export default {
         selectedRange: {
             get() {
                 return [
-                    this.appliedFilters[`${this.filter.key}[min]`] || this.filter.options.min,
-                    this.appliedFilters[`${this.filter.key}[max]`] || this.filter.options.max,
+                    Math.max(this.appliedFilters[`${this.filter.key}[min]`] || this.filter.options.min, this.filter.options.min),
+                    Math.min(this.appliedFilters[`${this.filter.key}[max]`] || this.filter.options.max, this.filter.options.max),
                 ];
             },
             set(value) {
@@ -53,16 +52,6 @@ export default {
         },
         isPrice() {
             return this.filter.title.includes('قیمت');
-        },
-    },
-    watch: {
-        selectedRange: {
-            deep: true,
-            handler: function(newVal, oldVal) {
-                if (!isEqual(newVal, oldVal)) {
-                    this.fetchProducts();
-                }
-            },
         },
     },
     methods: {

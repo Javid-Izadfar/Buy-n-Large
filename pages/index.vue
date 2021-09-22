@@ -1,11 +1,6 @@
 <template>
-    <g-container>
+    <g-container class="p-top-4">
         <g-row>
-            <g-col cols="18">
-                <g-box>
-                    put search here
-                </g-box>
-            </g-col>
             <g-col cols="13" order="2">
                 <product-list/>
                 <div class="p-top-2 p-bottom-4">

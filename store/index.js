@@ -66,10 +66,25 @@ export const actions = {
             },
         }).then(({ data }) => {
             if (data) {
-                commit('setPossibleFilters', Object.entries(data.filters).map((filter) => ({
+                const filters = Object.entries(data.filters).map((filter) => ({
                     key: filter[0],
                     ...filter[1],
-                })));
+                }));
+                // back backend api design
+                // filters.forEach(item => {
+                //     if (item.type === 'slider') {
+                //         commit('setFilter', { item: `${item.key}[max]`, value: item.options.max });
+                //         commit('setFilter', { item: `${item.key}[min]`, value: item.options.min });
+                //     }
+                // });
+                commit('setPossibleFilters', [
+                    {
+                        type: 'search',
+                        key: 'q',
+                        title: 'جستجو در نتایج',
+                    },
+                    ...filters,
+                ]);
                 commit('setProducts', data.products);
             }
         }).catch(() => {
