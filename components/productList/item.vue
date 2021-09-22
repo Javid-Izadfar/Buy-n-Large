@@ -48,7 +48,7 @@
                             </g-col>
                             <g-button @click.native="addToBasket"
                                       variant="accent"
-                                      class="quick_purchase p-left-2 p-right-2 p-top-1 p-bottom-1 m-right-2"
+                                      class="quick_purchase p-left-2 p-right-2 p-top-1 p-bottom-1"
                                       title="افزودن به سبد خرید">
                                 <icons-cart size="24"/>
                             </g-button>
@@ -106,6 +106,7 @@ export default {
         position: relative;
         .quick_purchase {
             margin-left: -100%;
+            margin-right: $gutter;
             transition: all 300ms ease-in-out;
         }
         &:hover {
@@ -119,16 +120,17 @@ export default {
         background: $secondary;
         color: $white;
         position: absolute;
-        top: $gutter;
+        top: $gutter * 0.5;
         right: $gutter * 1.5;
         padding: ($gutter * 0.25) ($gutter * 0.3);
         border-radius: $border-radius-xl;
-        font-size: $font-size-xs;
+        font-size: $font-size-sm;
+        font-weight: $font-weight-light;
         border: solid ($gutter * 0.5) $white;
+        line-height: 1.5;
     }
     .title {
         $line-height: 1.5;
-        font-weight: $font-weight-bold;
         line-height: $line-height;
         height: $font-size-base * $line-height * 2;
         overflow: hidden;

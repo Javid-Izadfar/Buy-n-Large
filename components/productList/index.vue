@@ -5,31 +5,24 @@
                                :key="product.id"
                                :product="product"/>
         </g-row>
-        <div v-show="isLoading">
+        <div v-show="isLoadingProducts">
+            <!-- TODO: add skeleton screen -->
             is Loading
         </div>
-        <div v-show="!products.length && !isLoading">
+        <div v-show="!products.length && !isLoadingProducts">
+            <!-- TODO: add illustration -->
             No Result
         </div>
     </div>
 </template>
 
 <script>
+import { mapState } from 'vuex';
+
 export default {
     name: 'ProductList',
-    props: {
-        products: {
-            type: Array,
-            default: () => ([]),
-        },
-        isLoading: {
-            type: Boolean,
-            default: false,
-        },
+    computed: {
+        ...mapState(['products', 'isLoadingProducts']),
     },
 };
 </script>
-
-<style lang="scss" scoped>
-
-</style>

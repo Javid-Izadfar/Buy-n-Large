@@ -10,6 +10,9 @@ $sides: top, right, bottom, left;
     .h-#{$size} {
         @include create-size($size * 25, 'height')
     }
+    .p-#{ $size } {
+        @include create-helper($size * $gutter * 0.5, 'all', 'padding')
+    }
     @each $side in $sides {
         .p-#{ $side }-#{ $size } {
             @include create-helper($size * $gutter * 0.5, $side, 'padding')

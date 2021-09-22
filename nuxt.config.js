@@ -36,6 +36,7 @@ export default {
 
     // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
     plugins: [
+        '~plugins/axios',
         '~plugins/filters',
     ],
 
@@ -57,7 +58,9 @@ export default {
     ],
 
     // Axios module configuration: https://go.nuxtjs.dev/config-axios
-    axios: {},
+    axios: {
+        baseURL: 'https://www.digikala.com/front-end',
+    },
 
     // Build Configuration: https://go.nuxtjs.dev/config-build
     build: {
