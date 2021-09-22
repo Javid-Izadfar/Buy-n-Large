@@ -6,7 +6,8 @@ export default {
     head: {
         title: 'javid-challenge',
         htmlAttrs: {
-            lang: 'en',
+            lang: 'fa',
+            dir: 'rtl',
         },
         meta: [
             { charset: 'utf-8' },
@@ -16,12 +17,22 @@ export default {
         ],
         link: [
             { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+            { rel: 'stylesheet', type: 'text/css', href: 'https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font@v30.1.0/dist/font-face.css' },
         ],
     },
 
     // Global CSS: https://go.nuxtjs.dev/config-css
     css: [
+        'reset-css',
+        '~/assets/style/vars/index.scss',
+        '~/assets/style/main.scss',
     ],
+
+    styleResources: {
+        scss: [
+            './assets/style/vars/*.scss',
+        ],
+    },
 
     // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
     plugins: [
@@ -32,14 +43,16 @@ export default {
 
     // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
     buildModules: [
-    // https://go.nuxtjs.dev/eslint
+        // https://go.nuxtjs.dev/eslint
         '@nuxtjs/eslint-module',
     ],
 
     // Modules: https://go.nuxtjs.dev/config-modules
     modules: [
-    // https://go.nuxtjs.dev/axios
+        // https://go.nuxtjs.dev/axios
         '@nuxtjs/axios',
+        // https://github.com/nuxt-community/style-resources-module
+        '@nuxtjs/style-resources',
     ],
 
     // Axios module configuration: https://go.nuxtjs.dev/config-axios
