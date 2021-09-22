@@ -30,8 +30,6 @@ export default {
 
 <style lang="scss" scoped>
     .col {
-        padding-left: $gutter;
-        padding-right: $gutter;
         @include create-col();
         @for $i from 1 through $cols-count {
             &--#{$i}c {

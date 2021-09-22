@@ -30,7 +30,8 @@ export default {
         overflow: hidden;
         padding: $gutter ($gutter * 2);
         margin-bottom: $gutter * 2;
-        background: $card-bg;
+        background: $box-bg;
+        color: $box-txt;
         border-radius: $card-border-radius;
         box-shadow: 0 10px 30px rgba(50, 50, 93, 0.12),
                     0 -1px 4px rgba(0, 0, 0, 0.06);

@@ -4,7 +4,8 @@
                    'row',
                    alignV ? `row--align-${alignV}` : '',
                    {
-                       'row--0g': noGutters
+                       'row--0g': noGutters,
+                       'row--hg': halfGutters,
                    },
                ]">
         <slot/>
@@ -22,6 +23,10 @@ export default {
             type: Boolean,
             default: false,
         },
+        halfGutters: {
+            type: Boolean,
+            default: false,
+        },
         alignV: {
             type: String,
             default: '',
@@ -34,15 +39,12 @@ export default {
     .row {
         display: flex;
         flex-wrap: wrap;
-        margin-right: $gutter * -1;
-        margin-left: $gutter * -1;
+        @include create-row()
         &--0g {
-            margin-right: 0;
-            margin-left: 0;
-            & > .col {
-                padding-right: 0;
-                padding-left: 0;
-            }
+            @include create-row(0)
+        }
+        &--hg {
+            @include create-row($gutter * 0.5)
         }
         &--align {
             &-center {
