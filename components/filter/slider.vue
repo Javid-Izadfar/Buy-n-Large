@@ -1,5 +1,10 @@
 <template>
-    <div class="range">
+    <div :class="[
+        'range',
+        {
+            'range--price': isPrice
+        }
+    ]">
         <label class="range_label">{{ filter.title }}</label>
         <client-only>
             <vue-range
@@ -8,37 +13,22 @@
                 :dot-size="16"
                 :speed="0.2"
                 :lazy="true"
-                :tooltip="isPrice ? false : 'always'"
                 :reverse="true"
                 :min="filter.options.min"
                 :max="filter.options.max"
                 :disabled="isLoadingProducts"
                 :formatter="formatter"
                 class="range_input"
-                tooltip-dir="bottom"/>
+                tooltip-dir="top"/>
         </client-only>
-        <g-row v-if="isPrice" class="text-center small">
-            <g-col cols="9">
-                از
-                <div class="range_price">
-                    {{ selectedRange[0] | toman }}
-                </div>
-                تومان
-            </g-col>
-            <g-col cols="9">
-                تا
-                <div class="range_price">
-                    {{ selectedRange[1] | toman }}
-                </div>
-                تومان
-            </g-col>
-        </g-row>
     </div>
 </template>
 
 <script>
-import { mapState, mapMutations } from 'vuex';
+import { mapState, mapMutations, mapActions } from 'vuex';
 import { addCommas, toFarsiDigits } from '~/scripts/utils/string';
+
+import isEqual from 'lodash.isequal';
 
 export default {
     props: {
@@ -65,10 +55,25 @@ export default {
             return this.filter.title.includes('قیمت');
         },
     },
+    watch: {
+        selectedRange: {
+            deep: true,
+            handler: function(newVal, oldVal) {
+                if (!isEqual(newVal, oldVal)) {
+                    this.fetchProducts();
+                }
+            },
+        },
+    },
     methods: {
         ...mapMutations(['setFilter']),
+        ...mapActions(['fetchProducts']),
         formatter(value) {
-            return toFarsiDigits(addCommas(value));
+            if (this.isPrice) {
+                return `${toFarsiDigits(addCommas(Math.floor(value / 10)))} ت`;
+            } else {
+                return toFarsiDigits(addCommas(value));
+            }
         },
     },
 };
@@ -80,7 +85,7 @@ export default {
             display: block;
         }
         &_input {
-            margin: $gutter 0;
+            margin-top: $gutter * 2;
             /deep/ .slider {
                 background-color: $filter-inactive;
                 &-process {
@@ -95,12 +100,6 @@ export default {
                     border: $filter-active !important;
                 }
             }
-        }
-        &_price {
-            background-color: rgba($filter-inactive, 0.1);
-            padding: $gutter * 0.5;
-            margin: $gutter * 0.5 0;
-            border-radius: $border-radius-lg;
         }
     }
 </style>

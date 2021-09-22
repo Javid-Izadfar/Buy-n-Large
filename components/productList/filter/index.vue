@@ -1,8 +1,5 @@
 <template>
     <div class="filters">
-        <pre>
-            {{ appliedFilters }}
-        </pre>
         <g-box v-for="filter in possibleFilters"
                :key="filter.key">
             <component :filter="filter" :is="`filter-${filter.type}`"/>
@@ -15,7 +12,7 @@ import { mapState } from 'vuex';
 
 export default {
     computed: {
-        ...mapState(['possibleFilters', 'appliedFilters']),
+        ...mapState(['possibleFilters']),
     },
 };
 </script>

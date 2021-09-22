@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import { mapState, mapMutations } from 'vuex';
+import { mapState, mapMutations, mapActions } from 'vuex';
 
 export default {
     props: {
@@ -25,15 +25,24 @@ export default {
         ...mapState(['appliedFilters', 'isLoadingProducts']),
         isChecked: {
             get() {
-                return this.appliedFilters[this.filter.key];
+                return !!this.appliedFilters[this.filter.key];
             },
             set(value) {
-                this.setFilter({ item: this.filter.key, value });
+                this.setFilter({
+                    item: this.filter.key,
+                    value: value ? 1 : undefined,
+                });
             },
+        },
+    },
+    watch: {
+        isChecked() {
+            this.fetchProducts();
         },
     },
     methods: {
         ...mapMutations(['setFilter']),
+        ...mapActions(['fetchProducts']),
     },
 };
 </script>

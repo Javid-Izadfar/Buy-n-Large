@@ -9,7 +9,7 @@
             <g-col cols="13" order="2">
                 <product-list/>
                 <div class="p-top-2 p-bottom-4">
-                    <g-button @click="loadMoreProducts"
+                    <g-button @click="fetchMoreProducts"
                               variant="primary-outline"
                               :is-loading="isLoadingProducts"
                               is-block>
@@ -26,7 +26,7 @@
 
 <script>
 
-import { mapMutations, mapActions, mapState } from 'vuex';
+import { mapActions, mapState } from 'vuex';
 
 export default {
     async asyncData({ app, store }) {
@@ -40,15 +40,7 @@ export default {
         ...mapState(['appliedFilters', 'isLoadingProducts']),
     },
     methods: {
-        ...mapMutations(['setFilter']),
-        ...mapActions(['fetchProducts']),
-        loadMoreProducts() {
-            this.setFilter({
-                item: 'page',
-                value: this.appliedFilters.page + 1,
-            });
-            this.fetchProducts();
-        },
+        ...mapActions(['fetchMoreProducts']),
     },
 };
 </script>
