@@ -1,0 +1,22 @@
+# Comparing HEAD with it's previous state to see if we have a diff on package.json containing ^ character,
+# and run yarn install if we do.
+# --unified=0 is for showing only the changed lines in diff
+# PREV_HEAD is HEAD in it's previous state
+# NEW_HEAD is current HEAD
+# IS_BRANCH_CHECKOUT will indicate if the checkout is a branch checkout or not
+# This hook can be disabled with `HUSKY_SKIP_HOOKS=1`, example: `HUSKY_SKIP_HOOKS=1 git checkout <branch>`
+PREV_HEAD=$(echo $HUSKY_GIT_PARAMS | cut -d ' ' -f1)
+NEW_HEAD=$(echo $HUSKY_GIT_PARAMS | cut -d ' ' -f2)
+IS_BRANCH_CHECKOUT=$(echo $HUSKY_GIT_PARAMS | cut -d ' ' -f3)
+
+if [ $IS_BRANCH_CHECKOUT == 1 ]; then
+    echo -e "\e[0;33m 🧐  Checking dependencies diff... \e[0m"
+    any_diff=$(git diff --unified=0 $NEW_HEAD $PREV_HEAD -- package.json | grep '\^' --color=never)
+    if [ -z "$any_diff" ]; then
+    	echo -e "\e[0;32m 🆗  No diff in dependencies \e[0m"
+    else
+    	echo $any_diff
+    	echo -e "\e[0;31m 😌  Detected new dependencies; Running yarn install... \e[0m"
+    	yarn install
+    fi
+fi

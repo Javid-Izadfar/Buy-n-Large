@@ -1,0 +1,8 @@
+{
+  "hooks": {
+    "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+    "pre-commit": "bash ./.githooks/pre-commit",
+    "post-merge": "bash ./.githooks/post-merge",
+    "post-checkout": "bash ./.githooks/post-checkout"
+  }
+}

@@ -1,0 +1,15 @@
+# Comparing HEAD with it's previous state to see if we have a diff on package.json containing ^ character,
+# and run yarn install if we do.
+# --unified=0 is for showing only the changed lines in diff
+# HEAD@{0} is current HEAD
+# HEAD@{1} is HEAD in it's previous state
+
+echo -e "\e[0;33m 🧐  Checking dependencies diff..."
+any_diff=$(git diff --unified=0 HEAD@{0} HEAD@{1} -- package.json | grep '\^' --color=never)
+if [ -z "$any_diff" ]; then
+	echo -e "\e[0;32m 🆗  No diff in dependencies \e[0m"
+else
+	echo $any_diff
+	echo -e "\e[0;31m 😌  Detected new dependencies; Running yarn install... \e[0m"
+	yarn install
+fi

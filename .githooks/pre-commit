@@ -1,0 +1,4 @@
+# Run linting on staged files
+
+echo -e "\e[0;33m 🧐  Checking lint issues... \e[0m"
+yarn lint-staged
