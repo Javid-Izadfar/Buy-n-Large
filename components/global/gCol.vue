@@ -3,7 +3,7 @@
                :class="[
                    'col',
                    cols ? `col--${cols}c` : '',
-                   order ? `col--${order}o` : ''
+                   order ? `col--${order}o` : '',
                ]">
         <slot/>
     </component>

@@ -3,6 +3,7 @@
                :class="[
                    'row',
                    alignV ? `row--align-${alignV}` : '',
+                   direction ? `row--dir-${direction}` : '',
                    {
                        'row--0g': noGutters,
                        'row--hg': halfGutters,
@@ -31,6 +32,10 @@ export default {
             type: String,
             default: '',
         },
+        direction: {
+            type: String,
+            default: '',
+        },
     },
 };
 </script>
@@ -45,6 +50,11 @@ export default {
         }
         &--hg {
             @include create-row($gutter * 0.5)
+        }
+        &--dir {
+            &-column {
+                flex-direction: column;
+            }
         }
         &--align {
             &-center {
