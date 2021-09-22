@@ -33,8 +33,8 @@ export default {
                     main: 'http://dkstatics-public.digikala.com/digikala-products/89b3060c2b29598a493ec3e5d51c25ece70569fb_1620822493.jpg?x-oss-process=image/resize,m_lfit,h_350,w_350/quality,q_60',
                 },
                 price: {
-                    selling_price: 1790000,
-                    rrp_price: 5490000,
+                    selling_price: 2,
+                    rrp_price: 3,
                 },
             },
             {
@@ -65,7 +65,7 @@ export default {
                     main: 'http://dkstatics-public.digikala.com/digikala-products/eda0ce297dc1b60b0c490f7cf1c0d9c295f84176_1620825324.jpg?x-oss-process=image/resize,m_lfit,h_350,w_350/quality,q_60',
                 },
                 price: {
-                    selling_price: 399000,
+                    selling_price: 1690000,
                     rrp_price: 1690000,
                 },
             },
