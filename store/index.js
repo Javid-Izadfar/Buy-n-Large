@@ -10,6 +10,7 @@ export const state = () => ({
         page: 1,
     },
     isLoadingProducts: false,
+    cartModalIsVisible: false,
     products: [],
 });
 
@@ -32,6 +33,12 @@ export const mutations = {
     },
     setProducts (state, products) {
         state.products = products;
+    },
+    openCartModal (state) {
+        state.cartModalIsVisible = true;
+    },
+    closeCartModal (state) {
+        state.cartModalIsVisible = false;
     },
 };
 
