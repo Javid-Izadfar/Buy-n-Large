@@ -38,6 +38,7 @@ export default {
     plugins: [
         '~plugins/axios',
         '~plugins/filters',
+        '~plugins/persistedState',
         { src: '~/plugins/rangeSlider', mode: 'client' },
     ],
 

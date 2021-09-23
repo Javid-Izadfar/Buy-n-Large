@@ -3,6 +3,7 @@ import { PRODUCTS_LIST } from '~endpoints';
 const PAGE_ROWS_COUNT = 18;
 
 export const state = () => ({
+    cart: [], // persisted
     possibleFilters: [],
     appliedFilters: {
         rows: PAGE_ROWS_COUNT,
@@ -13,6 +14,9 @@ export const state = () => ({
 });
 
 export const mutations = {
+    setCart (state, products) {
+        state.cart = products;
+    },
     setProductsLoading (state, isLoading) {
         state.isLoadingProducts = isLoading;
     },
@@ -93,6 +97,13 @@ export const actions = {
         }).finally(() => {
             commit('setProductsLoading', false);
         });
+    },
+    addToCart({ commit, state }, product) {
+        // TODO: check duplicated products
+        commit('setCart', [
+            ...state.cart,
+            product,
+        ]);
     },
 };
 

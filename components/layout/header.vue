@@ -1,8 +1,8 @@
 <template>
     <header class="header">
         <g-container class="h-4">
-            <g-row align-v="center" no-gutters class="h-4">
-                <g-col cols="9">
+            <g-row align-v="center" class="h-4">
+                <g-col>
                     <g-row align-v="center" no-gutters tag="ul">
                         <li class="p-left-3">
                             <nuxt-link :to="{name: 'index'}">
@@ -21,13 +21,42 @@
                         </li>
                     </g-row>
                 </g-col>
-                <g-col cols="9" class="text-left">
-                    2
-                </g-col>
+                <div class="text-left">
+                    <g-button variant="primary-empty"
+                              class="cart p-2"
+                              title="مشاهده‌ی سبد خرید"
+                              @click="openCartModal">
+                        <icons-cart/>
+                        <span v-show="itemsInCartCount"
+                              class="cart_badge">
+                            {{ itemsInCartCount | farsi }}
+                        </span>
+                    </g-button>
+                </div>
             </g-row>
         </g-container>
     </header>
 </template>
+
+<script>
+import { mapState } from 'vuex';
+
+export default {
+    computed: {
+        ...mapState(['cart']),
+        itemsInCartCount() {
+            // TODO: handle multiple same items
+            return this.cart.length;
+        },
+    },
+    methods: {
+        openCartModal() {
+            alert('open modal');
+        },
+    },
+};
+</script>
+
 <style lang="scss" scoped>
     .header {
         position: fixed;
@@ -35,7 +64,7 @@
         right: 0;
         width: 100%;
         height: $header-height;
-        background-color: rgba($white, $header-opacity);
+        background-color: rgba($header-bg, $header-opacity);
         backdrop-filter: blur(1rem);
         z-index: 50;
         box-shadow: 0 7px 8px 0 rgba($black, 0.04);
@@ -53,6 +82,24 @@
         .logo {
             height: $header-height * 0.5;
             display: block;
+        }
+    }
+    .cart {
+        position: relative;
+        &_badge {
+            $size: 1rem;
+            position: absolute;
+            bottom: 0.5rem;
+            right: 0.5rem;
+            background-color: $primary;
+            color: $white;
+            width: $size;
+            height: $size;
+            line-height: $size;
+            font-size: $font-size-xs;
+            border-radius: $border-radius-full;
+            border: solid 2px $header-bg;
+            box-sizing: content-box;
         }
     }
 </style>

@@ -67,6 +67,8 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex';
+
 export default {
     name: 'ProductListItem',
     props: {
@@ -90,9 +92,10 @@ export default {
         },
     },
     methods: {
+        ...mapActions(['addToCart']),
         addToBasket(evt) {
             evt.preventDefault();
-            alert('add to cart');
+            this.addToCart(this.product);
         },
     },
 };
@@ -137,6 +140,7 @@ export default {
     }
     .price {
         $self: &;
+        color: $black;
         &_rrp,
         &_selling {
             font-size: $font-size-lg;

@@ -32,4 +32,13 @@
             color: $txt;
         }
     }
+    &-empty {
+        background-color: transparent;
+        border-color: transparent;
+        color: $black;
+        &:hover {
+            background-color: $bg;
+            color: $txt;
+        }
+    }
 }

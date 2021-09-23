@@ -17,11 +17,14 @@
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.13.6",
+    "cookie": "^0.4.1",
     "core-js": "^3.15.1",
+    "js-cookie": "^3.0.1",
     "lodash.debounce": "^4.0.8",
     "nuxt": "^2.15.7",
     "reset-css": "^5.0.1",
-    "vue-range-component": "xwpongithub/vue-range-slider"
+    "vue-range-component": "xwpongithub/vue-range-slider",
+    "vuex-persistedstate": "^4.1.0"
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.14.7",
