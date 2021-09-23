@@ -7,3 +7,12 @@ small,
 .small {
     font-size: 80%;
 }
+
+a {
+    text-decoration: none;
+    transition: color 200ms ease-in-out;
+    color: $black;
+    &:hover {
+        color: $secondary;
+    }
+}

@@ -13,7 +13,13 @@
             <g-box class="m-bottom-0 h-4">
                 <g-row no-gutters direction="column" class="h-4">
                     <div>
-                        <g-img :src="product.images.main" height="200" lazy/>
+                        <g-img :src="
+                                   product.images ?
+                                       product.images.main :
+                                       require('~/assets/images/product-image-placeholder.png')
+                               "
+                               height="200"
+                               lazy/>
 
                         <div class="p-top-2">
                             <div class="title">
@@ -22,73 +28,45 @@
                         </div>
                     </div>
 
-                    <g-col class="text-left">
+                    <g-col v-if="product.price" class="text-left">
                         <g-row align-v="center" no-gutters>
-                            <g-col v-if="product.price">
-                                <div
-                                    :class="[
-                                        'price',
-                                        {
-                                            'price--discounted': hasDiscount
-                                        }
-                                    ]">
-                                    <div class="price_rrp">
-                                        {{ product.price.rrp_price | toman }}
-                                        <span v-if="!hasDiscount" class="price_currency">
-                                            تومان
-                                        </span>
-                                    </div>
-                                    <div v-if="hasDiscount" class="price_selling">
-                                        {{ product.price.selling_price | toman }}
-                                        <span class="price_currency">
-                                            تومان
-                                        </span>
-                                    </div>
-                                </div>
+                            <g-col>
+                                <product-price :amount="product.price"
+                                               :has-discount="hasDiscount"/>
                             </g-col>
                             <g-button @click.native="addToBasket"
                                       variant="accent"
                                       class="quick_purchase p-left-2 p-right-2 p-top-1 p-bottom-1"
-                                      title="افزودن به سبد خرید">
+                                      title="افزودن به سبد خرید"
+                                      :is-disabled="!product.price">
                                 <icons-cart size="24"/>
                             </g-button>
                         </g-row>
                     </g-col>
                 </g-row>
             </g-box>
-            <div v-if="hasDiscount" class="badge">
-                <g-row no-gutters align-v="center">
-                    <span class="m-left-1 m-right-1">%{{ discountPercent | farsi }}</span>
-                    <icons-sale size="24"/>
-                </g-row>
-            </div>
+            <g-badge v-if="hasDiscount"
+                     icon="sale"
+                     :title="`${discountPercent} درصد تخفیف`">
+                %{{ discountPercent | farsi }}
+            </g-badge>
         </nuxt-link>
     </g-col>
 </template>
 
 <script>
 import { mapActions } from 'vuex';
+import discountMixin from '~/scripts/mixins/discount';
 
 export default {
     name: 'ProductListItem',
+    mixins: [
+        discountMixin,
+    ],
     props: {
         product: {
             type: Object,
             default: () => ({}),
-        },
-    },
-    computed: {
-        discountPercent() {
-            try {
-                return Math.floor(
-                    (1 - (this.product.price.selling_price / this.product.price.rrp_price)) * 100
-                );
-            } catch {
-                return 0;
-            }
-        },
-        hasDiscount() {
-            return this.discountPercent > 0;
         },
     },
     methods: {
@@ -120,43 +98,15 @@ export default {
         }
     }
     .badge {
-        background: $secondary;
-        color: $white;
         position: absolute;
         top: $gutter * 0.5;
         right: $gutter * 1.5;
-        padding: ($gutter * 0.25) ($gutter * 0.3);
-        border-radius: $border-radius-xl;
-        font-size: $font-size-sm;
-        font-weight: $font-weight-light;
         border: solid ($gutter * 0.5) $white;
-        line-height: 1.5;
     }
     .title {
         $line-height: 1.5;
         line-height: $line-height;
         height: $font-size-base * $line-height * 2;
         overflow: hidden;
-    }
-    .price {
-        $self: &;
-        color: $black;
-        &_rrp,
-        &_selling {
-            font-size: $font-size-lg;
-            font-weight: $font-weight-bold;
-        }
-        &_currency {
-            font-size: $font-size-sm;
-            font-weight: $font-weight-light;
-        }
-        &--discounted {
-            #{$self}_rrp {
-                font-weight: $font-weight-light;
-                font-size: $font-size-base;
-                opacity: 0.8;
-                text-decoration: line-through;
-            }
-        }
     }
 </style>

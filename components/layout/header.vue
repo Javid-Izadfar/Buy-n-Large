@@ -69,18 +69,14 @@ export default {
         z-index: 50;
         box-shadow: 0 7px 8px 0 rgba($black, 0.04);
         a {
-            text-decoration: none;
-            color: $black;
             padding: $header-height * 0.25 0;
             line-height: $header-height * 0.5;
-            transition: color 200ms ease-in-out;
             display: block;
-            &:hover {
-                color: $secondary;
-            }
         }
         .logo {
             height: $header-height * 0.5;
+            background: $primary;
+            border-radius: $border-radius-lg;
             display: block;
         }
     }

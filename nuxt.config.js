@@ -64,6 +64,16 @@ export default {
         baseURL: 'https://www.digikala.com/front-end',
     },
 
+    // router: {
+    //     extendRoutes (routes, resolve) {
+    //         routes.push({
+    //             name: 'id-slug',
+    //             path: '/:id/:slug/',
+    //             component: resolve(__dirname, 'pages/_id.vue'),
+    //         });
+    //     },
+    // },
+
     // Build Configuration: https://go.nuxtjs.dev/config-build
     build: {
         extend(config, context) {
@@ -79,10 +89,6 @@ export default {
             // Extend only webpack config for client-bundle
             const src = config.resolve.alias['~'];
             config.resolve.alias['~root'] = path.join(src, '');
-            config.resolve.alias['~icons'] = path.join(
-                src,
-                'components/icons'
-            );
             config.resolve.alias['~endpoints'] = path.join(
                 src,
                 'scripts/utils/endpoints.js'

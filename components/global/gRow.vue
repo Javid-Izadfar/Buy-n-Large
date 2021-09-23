@@ -4,6 +4,7 @@
                    'row',
                    alignV ? `row--align-${alignV}` : '',
                    direction ? `row--dir-${direction}` : '',
+                   justify ? `row--justify-${justify}` : '',
                    {
                        'row--0g': noGutters,
                        'row--hg': halfGutters,
@@ -15,6 +16,7 @@
 
 <script>
 export default {
+    // TODO: ADD VALIDATION
     props: {
         tag: {
             type: String,
@@ -36,6 +38,10 @@ export default {
             type: String,
             default: '',
         },
+        justify: {
+            type: String,
+            default: '',
+        },
     },
 };
 </script>
@@ -54,6 +60,11 @@ export default {
         &--dir {
             &-column {
                 flex-direction: column;
+            }
+        }
+        &--justify {
+            &-between {
+                justify-content: space-between;
             }
         }
         &--align {
