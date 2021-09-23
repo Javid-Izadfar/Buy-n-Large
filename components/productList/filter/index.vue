@@ -20,6 +20,6 @@ export default {
 <style lang="scss" scoped>
     .filters {
         position: sticky;
-        top: 2rem;
+        top: $header-height + $gutter;
     }
 </style>

@@ -7,7 +7,7 @@
                  'image--dynamic-height': height > 0
              }
          ]"
-         :style="`height: ${height}px`">
+         :style="height? `height: ${height}px`: ''">
 </template>
 
 <script>

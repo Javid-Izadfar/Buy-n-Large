@@ -70,7 +70,7 @@ export const actions = {
                     key: filter[0],
                     ...filter[1],
                 }));
-                // back backend api design
+                // bad api design
                 // filters.forEach(item => {
                 //     if (item.type === 'slider') {
                 //         commit('setFilter', { item: `${item.key}[max]`, value: item.options.max });
