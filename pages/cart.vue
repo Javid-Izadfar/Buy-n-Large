@@ -3,7 +3,7 @@
         <cart-list :box-view="true"/>
         <g-row v-if="!cartIsEmpty" class="p-top-2 p-bottom-2">
             <g-col/>
-            <g-col cols="6">
+            <g-col cols="6" mobile-cols="18">
                 <cart-price :amount="cartPrice"
                             border-top
                             border-bottom>

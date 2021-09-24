@@ -3,6 +3,7 @@
                :class="[
                    'col',
                    cols ? `col--${cols}c` : '',
+                   mobileCols ? `col--${mobileCols}c-mobile` : '',
                    order ? `col--${order}o` : '',
                    grow ? `col--${grow}g` : '',
                ]">
@@ -18,6 +19,10 @@ export default {
             default: 'div',
         },
         cols: {
+            type: [Number, String],
+            default: 0,
+        },
+        mobileCols: {
             type: [Number, String],
             default: 0,
         },
@@ -47,6 +52,13 @@ export default {
             }
             &--#{$i}g {
                 flex-grow: $i;
+            }
+        }
+        @media only screen and (max-width: $max-width-mobile) {
+            @for $i from 1 through $cols-count {
+                &--#{$i}c-mobile {
+                    @include create-col($i);
+                }
             }
         }
     }

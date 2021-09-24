@@ -6,7 +6,7 @@
                     add form here
                 </g-box>
             </g-col>
-            <g-col cols="6">
+            <g-col cols="6" mobile-cols="18">
                 <cart-list hide-update/>
                 <template v-if="!cartIsEmpty">
                     <cart-price :amount="cartPrice"
@@ -34,7 +34,7 @@
             </g-col>
             <g-col v-if="!cartIsEmpty" class="text-left">
                 <g-button>
-                    پرداخت
+                    پرداخت حساب
                 </g-button>
             </g-col>
         </g-row>

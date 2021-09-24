@@ -34,5 +34,9 @@ export default {
         &--fluid {
             width: 100%;
         }
+        @media only screen and (max-width: $max-width-mobile) {
+            padding-right: $gutter;
+            padding-left: $gutter;
+        }
     }
 </style>

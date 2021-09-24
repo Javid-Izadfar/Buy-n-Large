@@ -1,7 +1,7 @@
 <template>
     <g-container class="p-top-4">
         <g-row>
-            <g-col cols="13" order="2">
+            <g-col cols="13" mobile-cols="18" order="2">
                 <product-list/>
                 <div class="p-top-2 p-bottom-4">
                     <g-button v-show="!isInLastPage && !isLoadingProducts"
@@ -12,7 +12,7 @@
                     </g-button>
                 </div>
             </g-col>
-            <g-col cols="5" tag="aside">
+            <g-col cols="5" mobile-cols="18" tag="aside">
                 <product-list-filter/>
             </g-col>
         </g-row>

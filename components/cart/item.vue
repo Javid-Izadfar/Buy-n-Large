@@ -24,11 +24,9 @@
                     </g-col>
                     <div class="w-4">
                         <g-row align-v="center">
-                            <g-col>
-                                <div class="item_price">
-                                    {{ item.price * item.count | toman }} تومان
-                                </div>
-                            </g-col>
+                            <div class="item_price p-right-2">
+                                {{ item.price * item.count | toman }} تومان
+                            </div>
                             <g-col v-if="!hideUpdate" class="text-left">
                                 <g-button @click="deleteFromCart(item)"
                                           variant="secondary-empty"

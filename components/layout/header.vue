@@ -9,19 +9,19 @@
                                 <g-img class="logo" src="/logo.png" alt=""/>
                             </nuxt-link>
                         </li>
-                        <li class="p-left-3">
+                        <li class="p-left-3 mobile-none">
                             <nuxt-link :to="{name: 'index'}">
                                 لیست محصولات
                             </nuxt-link>
                         </li>
-                        <li>
+                        <li class="mobile-none">
                             <a href="https://pixar.fandom.com/wiki/Buy_n_Large" target="_blank" rel="noopener noreferrer">
                                 درباره ما
                             </a>
                         </li>
                     </g-row>
                 </g-col>
-                <div class="text-left">
+                <g-col class="text-left">
                     <g-button :variant="canShowCart ? 'primary-empty' : 'empty'"
                               class="cart p-2"
                               title="مشاهده‌ی سبد خرید"
@@ -32,7 +32,7 @@
                             {{ cartCount | farsi }}
                         </span>
                     </g-button>
-                </div>
+                </g-col>
             </g-row>
         </g-container>
     </header>

@@ -78,6 +78,7 @@ export default {
             height: 100%;
             max-width: 40rem;
             margin: auto;
+            padding: $gutter;
         }
         &_header {
             padding: $gutter $gutter * 2;

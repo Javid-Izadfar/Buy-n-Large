@@ -6,7 +6,7 @@ export const state = () => ({
     cart: [], // persisted
     products: [],
     possibleFilters: [],
-    appliedFilters: {
+    appliedFilters: { // TODO: read filters from query
         rows: PAGE_ROWS_COUNT,
         page: 1,
     },
@@ -61,9 +61,10 @@ export const actions = {
                     ...data.products,
                 ]);
             }
-        }).catch(() => {
+        }).catch((e) => {
             // TODO: use something better that log
-            console.error('به چوخ رفت');
+            console.error('به چوخ رفت @fetchMoreProducts');
+            console.error(e);
         }).finally(() => {
             commit('setProductsLoading', false);
         });
@@ -103,9 +104,10 @@ export const actions = {
                 commit('setTotalProductsPage', data.pager.total_pages);
                 commit('setProducts', data.products);
             }
-        }).catch(() => {
+        }).catch((e) => {
             // TODO: use something better that log
-            console.error('به چوخ رفت');
+            console.error('به چوخ رفت @fetchProducts');
+            console.error(e);
         }).finally(() => {
             commit('setProductsLoading', false);
         });

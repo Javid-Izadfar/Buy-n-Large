@@ -1,57 +1,53 @@
 <template>
-    <g-col tag="li"
-           cols="6"
-           class="m-bottom-4">
-        <nuxt-link :to="{
-                       name: 'id',
-                       params: {
-                           id: product.id
-                       }
-                   }"
-                   class="item block h-4"
-                   :title="`مشاهده‌ی جزئیات ${product.title}`">
-            <g-box class="m-bottom-0 h-4">
-                <g-row no-gutters direction="column" class="h-4">
-                    <div>
-                        <g-img :src="
-                                   product.images ?
-                                       product.images.main :
-                                       require('~/assets/images/product-image-placeholder.png')
-                               "
-                               height="200"
-                               lazy/>
+    <nuxt-link :to="{
+                   name: 'id',
+                   params: {
+                       id: product.id
+                   }
+               }"
+               class="item block h-4"
+               :title="`مشاهده‌ی جزئیات ${product.title}`">
+        <g-box class="m-bottom-0 h-4">
+            <g-row no-gutters direction="column" class="h-4">
+                <div>
+                    <g-img :src="
+                               product.images ?
+                                   product.images.main :
+                                   require('~/assets/images/product-image-placeholder.png')
+                           "
+                           height="200"
+                           lazy/>
 
-                        <div class="p-top-2">
-                            <div class="title">
-                                {{ product.title }}
-                            </div>
+                    <div class="p-top-2">
+                        <div class="title">
+                            {{ product.title }}
                         </div>
                     </div>
+                </div>
 
-                    <g-col v-if="product.price" class="text-left">
-                        <g-row align-v="center" no-gutters>
-                            <g-col>
-                                <product-price :amount="product.price"
-                                               :has-discount="hasDiscount"/>
-                            </g-col>
-                            <g-button @click.native="addToBasket"
-                                      variant="accent"
-                                      class="quick_purchase p-left-2 p-right-2 p-top-1 p-bottom-1"
-                                      title="افزودن به سبد خرید"
-                                      :is-disabled="!product.price">
-                                <icons-cart size="24"/>
-                            </g-button>
-                        </g-row>
-                    </g-col>
-                </g-row>
-            </g-box>
-            <g-badge v-if="hasDiscount"
-                     icon="sale"
-                     :title="`${discountPercent} درصد تخفیف`">
-                %{{ discountPercent | farsi }}
-            </g-badge>
-        </nuxt-link>
-    </g-col>
+                <g-col v-if="product.price" class="text-left">
+                    <g-row align-v="center" no-gutters>
+                        <g-col>
+                            <product-price :amount="product.price"
+                                           :has-discount="hasDiscount"/>
+                        </g-col>
+                        <g-button @click.native="addToBasket"
+                                  variant="accent"
+                                  class="quick_purchase p-left-2 p-right-2 p-top-1 p-bottom-1"
+                                  title="افزودن به سبد خرید"
+                                  :is-disabled="!product.price">
+                            <icons-cart size="24"/>
+                        </g-button>
+                    </g-row>
+                </g-col>
+            </g-row>
+        </g-box>
+        <g-badge v-if="hasDiscount"
+                 icon="sale"
+                 :title="`${discountPercent} درصد تخفیف`">
+            %{{ discountPercent | farsi }}
+        </g-badge>
+    </nuxt-link>
 </template>
 
 <script>

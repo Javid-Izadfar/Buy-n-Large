@@ -21,7 +21,7 @@
             </li>
         </g-row>
         <g-row>
-            <g-col cols="7">
+            <g-col cols="7" mobile-cols="18">
                 <g-box>
                     <g-img :src="
                                product.images ?

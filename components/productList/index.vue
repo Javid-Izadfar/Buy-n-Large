@@ -1,9 +1,14 @@
 <template>
     <div>
         <g-row tag="ul">
-            <product-list-item v-for="product in products"
-                               :key="product.id"
-                               :product="product"/>
+            <g-col v-for="product in products"
+                   :key="product.id"
+                   tag="li"
+                   cols="6"
+                   mobile-cols="18"
+                   class="m-bottom-4">
+                <product-list-item :product="product"/>
+            </g-col>
         </g-row>
         <div v-show="isLoadingProducts">
             <!-- TODO: add skeleton screen -->

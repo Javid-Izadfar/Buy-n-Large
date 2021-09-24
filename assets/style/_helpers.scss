@@ -23,6 +23,19 @@ $sides: top, right, bottom, left;
     }
 }
 
+$displays: block, inline-block, none;
+
+@each $display in $displays {
+    .#{ $display } {
+        display: #{ $display }
+    }
+    @media only screen and (max-width: $max-width-mobile) {
+        .mobile-#{ $display } {
+            display: #{ $display }
+        }
+    }
+}
+
 .text-left {
     text-align: left;
 }
@@ -31,11 +44,4 @@ $sides: top, right, bottom, left;
 }
 .text-center {
     text-align: center;
-}
-
-.inline-block {
-    display: inline-block;
-}
-.block {
-    display: block;
 }

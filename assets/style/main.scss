@@ -1,11 +1,11 @@
 @import "type";
 @import "helpers";
 
+body {
+    overflow-x: hidden;
+}
 * {
     box-sizing: border-box;
-}
-.stop-scrolling {
-    overflow: hidden;
 }
 
 .icon {
