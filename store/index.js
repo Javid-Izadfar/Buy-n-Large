@@ -105,12 +105,81 @@ export const actions = {
             commit('setProductsLoading', false);
         });
     },
+    deleteFromCart({ commit, state }, product) {
+        const productIndex = state.cart.findIndex(item => item.id === product.id);
+        if (productIndex > -1) {
+            // Remove Item from Cart
+            commit('setCart',
+                state.cart.filter((_, i) => i !== productIndex),
+            );
+        }
+    },
+    removeFromCart({ commit, state }, product) {
+        const productIndex = state.cart.findIndex(item => item.id === product.id);
+        if (productIndex > -1) {
+            if (state.cart[productIndex].count > 1) {
+                // Remove One Count from An Item
+                commit('setCart',
+                    state.cart.map((item, index) => {
+                        if (index === productIndex) {
+                            return {
+                                ...item,
+                                count: item.count - 1,
+                            };
+                        } else {
+                            return item;
+                        }
+                    }),
+                );
+            } else {
+                // Remove Item from Cart
+                commit('setCart',
+                    state.cart.filter((_, i) => i !== productIndex),
+                );
+            }
+        }
+    },
     addToCart({ commit, state }, product) {
-        // TODO: check duplicated products
-        commit('setCart', [
-            ...state.cart,
-            product,
-        ]);
+        const productIndex = state.cart.findIndex(item => item.id === product.id);
+        if (productIndex > -1) {
+            // Added One to An Existing Item
+            commit('setCart',
+                state.cart.map((item, index) => {
+                    if (index === productIndex) {
+                        return {
+                            ...item,
+                            count: item.count + 1,
+                        };
+                    } else {
+                        return item;
+                    }
+                }),
+            );
+        } else {
+            // Push New Item to Cart
+            commit('setCart', [
+                ...state.cart,
+                {
+                    id: product.id,
+                    title: product.title,
+                    image: product.images?.main,
+                    price: product.price?.selling_price,
+                    count: 1,
+                },
+            ]);
+        }
+    },
+};
+
+export const getters = {
+    cartCount (state) {
+        return state.cart.reduce((acc, cur) => acc + cur.count, 0);
+    },
+    cartPrice (state) {
+        return state.cart.reduce((acc, cur) => acc + (cur.price * cur.count), 0);
+    },
+    cartIsEmpty (state) {
+        return !state.cart.length;
     },
 };
 

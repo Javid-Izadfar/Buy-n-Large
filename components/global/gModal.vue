@@ -1,6 +1,8 @@
 <template>
     <div class="modal">
-        <div class="modal_wrapper" v-show="isVisible">
+        <div class="modal_wrapper"
+             v-show="isVisible"
+             @click.self="isVisible = false">
             <div class="modal_content">
                 <g-row class="h-4" align-v="center">
                     <g-col>
@@ -11,7 +13,7 @@
                                 </p>
                                 <g-button class="modal_header_close p-2"
                                           variant="primary-empty"
-                                          title="بستن مودال"
+                                          title="بستن"
                                           @click="isVisible = false">
                                     <icons-close size="14"/>
                                 </g-button>
@@ -90,7 +92,7 @@ export default {
             }
         }
         &_body {
-            max-height: 40vh;
+            max-height: 45vh;
             overflow-y: auto;
         }
     }

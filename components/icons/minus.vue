@@ -1,0 +1,7 @@
+<template functional>
+    <svg class="icon" :height="props.size || 24" :width="props.size || 24" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+        <g fill="currentColor">
+            <path d="M492,236H20c-11.046,0-20,8.954-20,20c0,11.046,8.954,20,20,20h472c11.046,0,20-8.954,20-20S503.046,236,492,236z"/>
+        </g>
+    </svg>
+</template>

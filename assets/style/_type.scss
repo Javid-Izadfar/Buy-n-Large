@@ -8,6 +8,11 @@ small,
     font-size: 80%;
 }
 
+strong,
+.bold {
+    font-weight: $font-weight-bold;
+}
+
 a {
     text-decoration: none;
     transition: color 200ms ease-in-out;

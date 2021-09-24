@@ -4,6 +4,7 @@
                    'col',
                    cols ? `col--${cols}c` : '',
                    order ? `col--${order}o` : '',
+                   grow ? `col--${grow}g` : '',
                ]">
         <slot/>
     </component>
@@ -24,6 +25,10 @@ export default {
             type: [Number, String],
             default: 0,
         },
+        grow: {
+            type: [Number, String],
+            default: 0,
+        },
     },
 };
 </script>
@@ -36,9 +41,12 @@ export default {
                 @include create-col($i);
             }
         }
-        @for $i from 1 through 5 {
+        @for $i from 0 through 5 {
             &--#{$i}o {
                 order: $i;
+            }
+            &--#{$i}g {
+                flex-grow: $i;
             }
         }
     }

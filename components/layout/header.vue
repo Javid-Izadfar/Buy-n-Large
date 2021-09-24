@@ -27,9 +27,9 @@
                               title="مشاهده‌ی سبد خرید"
                               @click="openCartModal">
                         <icons-cart/>
-                        <span v-show="itemsInCartCount"
+                        <span v-show="cartCount"
                               class="cart_badge">
-                            {{ itemsInCartCount | farsi }}
+                            {{ cartCount | farsi }}
                         </span>
                     </g-button>
                 </div>
@@ -39,15 +39,11 @@
 </template>
 
 <script>
-import { mapState, mapMutations } from 'vuex';
+import { mapMutations, mapGetters } from 'vuex';
 
 export default {
     computed: {
-        ...mapState(['cart']),
-        itemsInCartCount() {
-            // TODO: handle multiple same items
-            return this.cart.length;
-        },
+        ...mapGetters(['cartCount']),
     },
     methods: {
         ...mapMutations(['openCartModal']),
