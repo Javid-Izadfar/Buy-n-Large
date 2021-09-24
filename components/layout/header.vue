@@ -22,13 +22,18 @@
                     </g-row>
                 </g-col>
                 <g-col class="text-left">
+                    <g-button variant="empty"
+                              class="headerBtn p-2"
+                              title="پروفایل کاربری">
+                        <icons-user/>
+                    </g-button>
                     <g-button :variant="canShowCart ? 'primary-empty' : 'empty'"
-                              class="cart p-2"
+                              class="headerBtn p-2"
                               title="مشاهده‌ی سبد خرید"
                               @click="showCart">
                         <icons-cart/>
                         <span v-show="cartCount"
-                              class="cart_badge">
+                              class="headerBtn_badge">
                             {{ cartCount | farsi }}
                         </span>
                     </g-button>
@@ -83,7 +88,7 @@ export default {
             display: block;
         }
     }
-    .cart {
+    .headerBtn {
         position: relative;
         &_badge {
             $size: 1rem;

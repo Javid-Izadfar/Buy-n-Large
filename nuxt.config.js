@@ -39,6 +39,7 @@ export default {
         '~plugins/axios',
         '~plugins/filters',
         '~plugins/persistedState',
+        { src: '~/plugins/notif', ssr: false },
         { src: '~/plugins/rangeSlider', mode: 'client' },
     ],
 

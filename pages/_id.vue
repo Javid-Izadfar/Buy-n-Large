@@ -55,7 +55,7 @@
                                    :has-discount="hasDiscount"/>
                 </div>
                 <g-button variant="accent"
-                          @click="addToCart(product)"
+                          @click="addToBasket"
                           :is-disabled="!product.price"
                           title="افزودن به سبد خرید">
                     <g-row no-gutters align-v="center">
@@ -98,6 +98,12 @@ export default {
     },
     methods: {
         ...mapActions(['addToCart']),
+        addToBasket() {
+            this.addToCart(this.product);
+            this.$snack.success({
+                text: 'محصول با موفقیت به سبد خرید اضافه شد',
+            });
+        },
     },
 };
 </script>

@@ -70,6 +70,9 @@ export default {
         addToBasket(evt) {
             evt.preventDefault();
             this.addToCart(this.product);
+            this.$snack.success({
+                text: 'محصول با موفقیت به سبد خرید اضافه شد',
+            });
         },
     },
 };

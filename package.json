@@ -24,6 +24,7 @@
     "nuxt": "^2.15.7",
     "reset-css": "^5.0.1",
     "vue-range-component": "xwpongithub/vue-range-slider",
+    "vue-snack": "^0.1.4",
     "vuex-persistedstate": "^4.1.0"
   },
   "devDependencies": {

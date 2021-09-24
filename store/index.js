@@ -113,7 +113,6 @@ export const actions = {
         });
     },
     deleteFromCart({ commit, state }, product) {
-        // TODO: Add Notification
         const productIndex = state.cart.findIndex(item => item.id === product.id);
         if (productIndex > -1) {
             // Remove Item from Cart
@@ -123,7 +122,6 @@ export const actions = {
         }
     },
     removeFromCart({ commit, state }, product) {
-        // TODO: Add Notification
         const productIndex = state.cart.findIndex(item => item.id === product.id);
         if (productIndex > -1) {
             if (state.cart[productIndex].count > 1) {
@@ -149,7 +147,6 @@ export const actions = {
         }
     },
     addToCart({ commit, state }, product) {
-        // TODO: Add Notification
         const productIndex = state.cart.findIndex(item => item.id === product.id);
         if (productIndex > -1) {
             // Added One to An Existing Item
