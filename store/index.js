@@ -5,7 +5,13 @@ const PAGE_ROWS_COUNT = 18;
 export const state = () => ({
     cart: [], // persisted
     products: [],
-    possibleFilters: [],
+    possibleFilters: [
+        {
+            type: 'search',
+            key: 'q',
+            title: 'جستجو در نتایج',
+        },
+    ],
     appliedFilters: { // TODO: read filters from query
         rows: PAGE_ROWS_COUNT,
         page: 1,

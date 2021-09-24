@@ -2,9 +2,7 @@
     <g-container class="p-top-4">
         <g-row>
             <g-col order="1">
-                <g-box>
-                    add form here
-                </g-box>
+                <shiping-info/>
             </g-col>
             <g-col cols="6" mobile-cols="18">
                 <cart-list hide-update/>

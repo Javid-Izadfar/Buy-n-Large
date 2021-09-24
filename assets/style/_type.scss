@@ -1,6 +1,7 @@
 body,
-.snackbar,
-input {
+input,
+textarea,
+.snackbar {
     font-family: $font-family;
     font-weight: $font-weight-normal;
 }

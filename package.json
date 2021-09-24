@@ -25,6 +25,7 @@
     "reset-css": "^5.0.1",
     "vue-range-component": "xwpongithub/vue-range-slider",
     "vue-snack": "^0.1.4",
+    "vuelidate": "^0.7.6",
     "vuex-persistedstate": "^4.1.0"
   },
   "devDependencies": {

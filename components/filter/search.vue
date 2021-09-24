@@ -70,7 +70,7 @@ export default {
             border-radius: $border-radius-base;
             width: 100%;
             margin-top: 1rem;
-            padding: 0.5rem 2.5rem 0.5rem 1rem;
+            padding: $gutter * 0.5 $gutter * 2.5 $gutter * 0.5 $gutter;
             outline: none;
             &::-webkit-search-decoration,
             &::-webkit-search-cancel-button,
