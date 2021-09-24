@@ -10,5 +10,5 @@ Vue.filter('farsi', value => {
 });
 
 Vue.filter('toman', value => {
-    return toFarsiDigits(addCommas(Math.floor(value / 10)));
+    return toFarsiDigits(addCommas(Math.floor(parseInt(value) / 10)));
 });

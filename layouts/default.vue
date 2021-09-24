@@ -20,8 +20,8 @@
                             </div>
                         </g-col>
                         <g-col class="text-left">
-                            <g-button :to="{name: 'index'}">
-                                ثبت سفارش
+                            <g-button :to="{name: 'checkout'}">
+                                نهایی کردن سفارش
                             </g-button>
                         </g-col>
                     </g-row>
@@ -63,6 +63,7 @@ export default {
 <style lang="scss" scoped>
     .nuxt_wrapper {
         padding-top: $header-height + $gutter;
+        padding-bottom: $gutter;
     }
     .payableAmount {
         opacity: 0.8;

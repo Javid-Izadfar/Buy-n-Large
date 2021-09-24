@@ -50,7 +50,8 @@ export default {
 
 <style lang="scss" scoped>
     .button {
-        @include create-button()
+        @include create-button();
+        @include create-button-var();
         &--block {
             padding-right: 0;
             padding-left: 0;

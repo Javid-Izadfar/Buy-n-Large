@@ -1,7 +1,7 @@
 <template>
-    <div class="item">
+    <component :is="boxView ? 'g-box' : 'div'" class="item">
         <g-row>
-            <g-col cols="4">
+            <g-col grow="0">
                 <nuxt-link :to="{
                                name: 'id',
                                params: {
@@ -11,6 +11,7 @@
                            :title="`مشاهده‌ی جزئیات ${item.title}`">
                     <g-img :src="item.image || require('~/assets/images/product-image-placeholder.png')"
                            :alt="item.title"
+                           height="100"
                            lazy/>
                 </nuxt-link>
             </g-col>
@@ -28,7 +29,7 @@
                                     {{ item.price * item.count | toman }} تومان
                                 </div>
                             </g-col>
-                            <g-col v-if="canUpdate" class="text-left">
+                            <g-col v-if="!hideUpdate" class="text-left">
                                 <g-button @click="deleteFromCart(item)"
                                           variant="secondary-empty"
                                           class="p-1"
@@ -59,7 +60,7 @@
                 </g-row>
             </g-col>
         </g-row>
-    </div>
+    </component>
 </template>
 
 <script>
@@ -71,7 +72,11 @@ export default {
             type: Object,
             default: () => ({}),
         },
-        canUpdate: {
+        hideUpdate: {
+            type: Boolean,
+            default: false,
+        },
+        boxView: {
             type: Boolean,
             default: false,
         },
@@ -84,13 +89,19 @@ export default {
 
 <style lang="scss" scoped>
     .item {
-        border: solid 1px $mute;
-        border-radius: $border-radius-base;
-        padding: $gutter;
+        &:not(.box) {
+            border: solid 1px $mute;
+            border-radius: $border-radius-base;
+            padding: $gutter;
+            background-color: $box-bg;
+        }
         &_title {
-            font-size: $font-size-base;
+            $line-height: 1.5;
+            line-height: $line-height;
+            font-size: $font-size-base !important;
+            height: $font-size-base * $line-height * 2;
             margin: $gutter * 0.5 0;
-            line-height: 1.5;
+            overflow: hidden;
         }
         &_price {
             font-size: $font-size-sm;

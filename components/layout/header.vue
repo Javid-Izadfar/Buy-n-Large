@@ -22,10 +22,10 @@
                     </g-row>
                 </g-col>
                 <div class="text-left">
-                    <g-button variant="primary-empty"
+                    <g-button :variant="canShowCart ? 'primary-empty' : 'empty'"
                               class="cart p-2"
                               title="مشاهده‌ی سبد خرید"
-                              @click="openCartModal">
+                              @click="showCart">
                         <icons-cart/>
                         <span v-show="cartCount"
                               class="cart_badge">
@@ -44,9 +44,18 @@ import { mapMutations, mapGetters } from 'vuex';
 export default {
     computed: {
         ...mapGetters(['cartCount']),
+        canShowCart() {
+            const illegalRoutes = ['checkout', 'cart'];
+            return !illegalRoutes.some(item => item === this.$route.name);
+        },
     },
     methods: {
         ...mapMutations(['openCartModal']),
+        showCart() {
+            if (this.canShowCart) {
+                this.openCartModal();
+            }
+        },
     },
 };
 </script>
