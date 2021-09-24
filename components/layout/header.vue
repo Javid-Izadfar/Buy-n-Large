@@ -6,7 +6,7 @@
                     <g-row align-v="center" no-gutters tag="ul">
                         <li class="p-left-3">
                             <nuxt-link :to="{name: 'index'}">
-                                <g-img class="logo" src="/logo.png" alt=""/>
+                                <g-img class="logo" src="/logo.png" alt="Buy and Large"/>
                             </nuxt-link>
                         </li>
                         <li class="p-left-3 mobile-none">

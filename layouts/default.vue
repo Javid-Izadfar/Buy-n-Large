@@ -28,6 +28,7 @@
                 </div>
             </template>
         </g-modal>
+        <layout-footer/>
     </div>
 </template>
 
@@ -62,8 +63,9 @@ export default {
 
 <style lang="scss" scoped>
     .nuxt_wrapper {
-        padding-top: $header-height + $gutter;
-        padding-bottom: $gutter;
+        margin-top: $header-height + $gutter;
+        margin-bottom: $gutter;
+        min-height: 75vh;
     }
     .payableAmount {
         opacity: 0.8;
