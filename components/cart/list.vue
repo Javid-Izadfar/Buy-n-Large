@@ -8,7 +8,7 @@
         <li v-for="item in cart"
             :key="item.id"
             class="m-bottom-2">
-            <cart-item :item="item"/>
+            <cart-item :item="item" :can-update="canUpdate"/>
         </li>
         <li class="cart_error">
             سبد خرید شما خالی است!
@@ -20,6 +20,12 @@
 import { mapState, mapGetters } from 'vuex';
 
 export default {
+    props: {
+        canUpdate: {
+            type: Boolean,
+            default: true,
+        },
+    },
     computed: {
         ...mapState(['cart']),
         ...mapGetters(['cartIsEmpty']),

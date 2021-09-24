@@ -28,7 +28,7 @@
                                     {{ item.price * item.count | toman }} تومان
                                 </div>
                             </g-col>
-                            <g-col class="text-left">
+                            <g-col v-if="canUpdate" class="text-left">
                                 <g-button @click="deleteFromCart(item)"
                                           variant="secondary-empty"
                                           class="p-1"
@@ -71,6 +71,10 @@ export default {
             type: Object,
             default: () => ({}),
         },
+        canUpdate: {
+            type: Boolean,
+            default: false,
+        },
     },
     methods: {
         ...mapActions(['addToCart', 'removeFromCart', 'deleteFromCart']),
@@ -91,6 +95,8 @@ export default {
         &_price {
             font-size: $font-size-sm;
             font-weight: $font-weight-light;
+            line-height: $font-size-base;
+            padding: $gutter * 0.5 0;
             opacity: 0.8;
         }
     }
