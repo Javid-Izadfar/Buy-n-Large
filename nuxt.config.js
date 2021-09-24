@@ -4,7 +4,7 @@ import path from 'path';
 export default {
     // Global page headers: https://go.nuxtjs.dev/config-head
     head: {
-        title: 'Buy n Large',
+        title: 'بای اند لارج',
         htmlAttrs: {
             lang: 'fa',
             dir: 'rtl',
@@ -38,6 +38,7 @@ export default {
     plugins: [
         '~plugins/axios',
         '~plugins/filters',
+        '~plugins/slug',
         '~plugins/persistedState',
         { src: '~/plugins/notif', ssr: false },
         { src: '~/plugins/rangeSlider', mode: 'client' },
@@ -65,15 +66,15 @@ export default {
         baseURL: 'https://www.digikala.com/front-end',
     },
 
-    // router: {
-    //     extendRoutes (routes, resolve) {
-    //         routes.push({
-    //             name: 'id-slug',
-    //             path: '/:id/:slug/',
-    //             component: resolve(__dirname, 'pages/_id.vue'),
-    //         });
-    //     },
-    // },
+    router: {
+        extendRoutes (routes, resolve) {
+            routes.push({
+                name: 'id-slug',
+                path: '/:id/:slug/',
+                component: resolve(__dirname, 'pages/_id.vue'),
+            });
+        },
+    },
 
     // Build Configuration: https://go.nuxtjs.dev/config-build
     build: {

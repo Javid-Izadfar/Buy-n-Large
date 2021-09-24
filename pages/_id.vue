@@ -90,10 +90,28 @@ export default {
     mixins: [
         discountMixin,
     ],
-    async asyncData({ app, params }) {
+    async asyncData({ app, params, redirect }) {
         const { data } = await app.$axios.$get(PRODUCT_DETAIL(params.id));
+
+        if (!data) {
+            redirect({
+                name: 'index',
+            });
+        }
+
+        const productSlug = app.$slugify(data.product.title);
+        if (params.slug && (params.slug !== productSlug)) {
+            redirect({
+                name: 'id-slug',
+                params: {
+                    id: params.id,
+                    slug: productSlug,
+                },
+            });
+        }
+
         return {
-            product: data?.product || {},
+            product: data.product || {},
         };
     },
     methods: {

@@ -1,8 +1,9 @@
 <template>
     <nuxt-link :to="{
-                   name: 'id',
+                   name: 'id-slug',
                    params: {
-                       id: product.id
+                       id: product.id,
+                       slug: $slugify(product.title)
                    }
                }"
                class="item block h-4"

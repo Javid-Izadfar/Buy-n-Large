@@ -3,9 +3,10 @@
         <g-row>
             <g-col grow="0">
                 <nuxt-link :to="{
-                               name: 'id',
+                               name: 'id-slug',
                                params: {
-                                   id: item.id
+                                   id: item.id,
+                                   slug: $slugify(item.title)
                                }
                            }"
                            :title="`مشاهده‌ی جزئیات ${item.title}`">
