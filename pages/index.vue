@@ -4,9 +4,9 @@
             <g-col cols="13" order="2">
                 <product-list/>
                 <div class="p-top-2 p-bottom-4">
-                    <g-button @click="fetchMoreProducts"
+                    <g-button v-show="!isInLastPage && !isLoadingProducts"
+                              @click="fetchMoreProducts"
                               variant="primary-outline"
-                              :is-loading="isLoadingProducts"
                               is-block>
                         بارگذاری موارد بیشتر
                     </g-button>
@@ -21,7 +21,7 @@
 
 <script>
 
-import { mapActions, mapState } from 'vuex';
+import { mapActions, mapState, mapGetters } from 'vuex';
 
 export default {
     async asyncData({ app, store }) {
@@ -33,6 +33,7 @@ export default {
     },
     computed: {
         ...mapState(['appliedFilters', 'isLoadingProducts']),
+        ...mapGetters(['isInLastPage']),
     },
     methods: {
         ...mapActions(['fetchMoreProducts']),

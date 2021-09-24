@@ -4,14 +4,15 @@ const PAGE_ROWS_COUNT = 18;
 
 export const state = () => ({
     cart: [], // persisted
+    products: [],
     possibleFilters: [],
     appliedFilters: {
         rows: PAGE_ROWS_COUNT,
         page: 1,
     },
+    totalProductsPages: 1,
     isLoadingProducts: false,
     cartModalIsVisible: false,
-    products: [],
 });
 
 export const mutations = {
@@ -30,6 +31,9 @@ export const mutations = {
             {
                 [item]: value,
             });
+    },
+    setTotalProductsPage (state, count) {
+        state.totalProductsPages = count;
     },
     setProducts (state, products) {
         state.products = products;
@@ -96,6 +100,7 @@ export const actions = {
                     },
                     ...filters,
                 ]);
+                commit('setTotalProductsPage', data.pager.total_pages);
                 commit('setProducts', data.products);
             }
         }).catch(() => {
@@ -175,6 +180,9 @@ export const actions = {
 };
 
 export const getters = {
+    isInLastPage (state) {
+        return state.totalProductsPages <= state.appliedFilters.page;
+    },
     cartCount (state) {
         return state.cart.reduce((acc, cur) => acc + cur.count, 0);
     },

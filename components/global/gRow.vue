@@ -66,6 +66,9 @@ export default {
             &-between {
                 justify-content: space-between;
             }
+            &-center {
+                justify-content: center;
+            }
         }
         &--align {
             &-center {
