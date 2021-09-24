@@ -31,6 +31,9 @@
 import { mapGetters } from 'vuex';
 
 export default {
+    head: () => ({
+        title: 'سبد خرید',
+    }),
     computed: {
         ...mapGetters(['cartIsEmpty', 'cartPrice']),
     },

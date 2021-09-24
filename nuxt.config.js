@@ -4,7 +4,10 @@ import path from 'path';
 export default {
     // Global page headers: https://go.nuxtjs.dev/config-head
     head: {
-        title: 'بای اند لارج',
+        titleTemplate: (titleChunk) => {
+            // If undefined or blank then we don't need the pipe
+            return titleChunk ? `${titleChunk} | بای اند لارج` : 'بای اند لارج';
+        },
         htmlAttrs: {
             lang: 'fa',
             dir: 'rtl',

@@ -114,6 +114,15 @@ export default {
             product: data.product || {},
         };
     },
+    head() {
+        return {
+            title: `خرید آنلاین ${this.product.title}`,
+            link: [{
+                rel: 'canonical',
+                href: `/${this.product.id}/${this.$slugify(this.product.title)}`,
+            }],
+        };
+    },
     methods: {
         ...mapActions(['addToCart']),
         addToBasket() {

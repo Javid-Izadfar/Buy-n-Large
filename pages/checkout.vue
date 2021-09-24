@@ -53,6 +53,9 @@ export default {
     data: () => ({
         shipmentPrice: 250000,
     }),
+    head: () => ({
+        title: 'نهایی کردن خرید',
+    }),
     computed: {
         ...mapGetters(['cartPrice', 'cartIsEmpty']),
     },
